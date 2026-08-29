@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bn3jbtrycdol2"]
+
+[ext_resource type="Texture2D" uid="uid://lkgj5f3wv7yx" path="res://ball.webp" id="1_nikp6"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gflbs"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h4t62"]
+radius = 22.022715
+
+[node name="Pin" type="StaticBody2D" unique_id=1737583270 groups=["pin"]]
+physics_material_override = SubResource("PhysicsMaterial_gflbs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1608202633]
+shape = SubResource("CircleShape2D_h4t62")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=503015165]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(0.04583333, 0.04583333)
+texture = ExtResource("1_nikp6")

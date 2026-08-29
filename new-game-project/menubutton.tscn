@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://rx1actnumh0a"]
+
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="1_noykn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5a0fg"]
+size = Vector2(372, 221)
+
+[node name="Menubutton" type="Node" unique_id=193734716]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=61244180 groups=["menu"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=924707370]
+position = Vector2(187.5, 109.5)
+scale = Vector2(2.8984377, 1.7109375)
+texture = ExtResource("1_noykn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2075604415]
+position = Vector2(187, 111.5)
+shape = SubResource("RectangleShape2D_5a0fg")
