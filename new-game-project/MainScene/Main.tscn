@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://4pqund3nukl7"]
+
+[ext_resource type="Script" uid="uid://dt3nc4our1mgp" path="res://MainScene/Main.gd" id="1_wymcl"]
+[ext_resource type="PackedScene" uid="uid://rx1actnumh0a" path="res://Menu/menubutton.tscn" id="2_ia0hc"]
+[ext_resource type="PackedScene" uid="uid://bn3jbtrycdol2" path="res://Pin/pin.tscn" id="3_ia0hc"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wtcfe"]
+bounce = 0.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wtcfe"]
+radius = 547.781
+
+[node name="Main" type="Node2D" unique_id=1314563197]
+script = ExtResource("1_wymcl")
+
+[node name="Timer" type="Timer" parent="." unique_id=783776557]
+one_shot = true
+
+[node name="Label" type="Label" parent="." unique_id=889664915]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=823122327]
+physics_material_override = SubResource("PhysicsMaterial_wtcfe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=2038966835]
+position = Vector2(1003, 1482)
+shape = SubResource("CircleShape2D_wtcfe")
+
+[node name="Menubutton" parent="." unique_id=1002424605 instance=ExtResource("2_ia0hc")]
+
+[node name="Pin" parent="." unique_id=2067103904 instance=ExtResource("3_ia0hc")]
+position = Vector2(934, 334)
+
+[node name="Pin2" parent="." unique_id=26350007 instance=ExtResource("3_ia0hc")]
+position = Vector2(1231, 368)
+
+[node name="Pin3" parent="." unique_id=1443271118 instance=ExtResource("3_ia0hc")]
+position = Vector2(699, 524)
+
+[node name="Pin4" parent="." unique_id=1656932351 instance=ExtResource("3_ia0hc")]
+position = Vector2(1030, 738)
+
+[node name="Pin5" parent="." unique_id=1601333318 instance=ExtResource("3_ia0hc")]
+position = Vector2(296, 648)
+
+[node name="Pin6" parent="." unique_id=111901955 instance=ExtResource("3_ia0hc")]
+position = Vector2(1486, 707)
+
+[node name="Pin7" parent="." unique_id=1379742937 instance=ExtResource("3_ia0hc")]
+position = Vector2(695, 849)
+
+[connection signal="mouse_entered" from="Menubutton/Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Menubutton/Area2D" to="." method="_on_area_2d_mouse_exited"]
+
+[editable path="Menubutton"]
