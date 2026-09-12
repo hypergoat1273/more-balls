@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://ock5l7ogrrup"]
+
+[ext_resource type="Script" uid="uid://c1i62dbcklpep" path="res://Sprite2D.gd" id="2_23j6s"]
+
+[node name="Cannon" type="Node2D" unique_id=778624047]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1254582596]
+position = Vector2(500, 0)
+rotation = -1.5707964
+script = ExtResource("2_23j6s")
