@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://bn3jbtrycdol2"]
+
+[ext_resource type="Script" uid="uid://r6mk8ycee4pp" path="res://Pin/pin.gd" id="1_n8ik2"]
+[ext_resource type="Texture2D" uid="uid://lkgj5f3wv7yx" path="res://Ball/ball.webp" id="1_nikp6"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gflbs"]
+bounce = 0.3
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h4t62"]
+radius = 21.0
+
+[sub_resource type="Animation" id="Animation_iskro"]
+resource_name = "Collide"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.04583333, 0.04583333), Vector2(0.035, 0.035), Vector2(0.045, 0.045)]
+}
+
+[sub_resource type="Animation" id="Animation_n8ik2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.04583333, 0.04583333)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_54c6s"]
+_data = {
+&"Collide": SubResource("Animation_iskro"),
+&"RESET": SubResource("Animation_n8ik2")
+}
+
+[node name="Pin" type="RigidBody2D" unique_id=2067103904 groups=["pin"]]
+physics_material_override = SubResource("PhysicsMaterial_gflbs")
+gravity_scale = 0.0
+freeze = true
+freeze_mode = 1
+contact_monitor = true
+max_contacts_reported = 10
+script = ExtResource("1_n8ik2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1608202633]
+shape = SubResource("CircleShape2D_h4t62")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=503015165]
+scale = Vector2(0.04583333, 0.04583333)
+texture = ExtResource("1_nikp6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1812333246]
+libraries/ = SubResource("AnimationLibrary_54c6s")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
