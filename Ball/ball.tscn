@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://neafyrt5gjco"]
 
 [ext_resource type="Script" uid="uid://blbwjk6wovgbl" path="res://Ball/ball.gd" id="1_65gad"]
-[ext_resource type="Texture2D" uid="uid://lkgj5f3wv7yx" path="res://ball.webp" id="2_ngrkv"]
+[ext_resource type="Texture2D" uid="uid://lkgj5f3wv7yx" path="res://Ball/ball.webp" id="2_ngrkv"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jiowd"]
 bounce = 0.3

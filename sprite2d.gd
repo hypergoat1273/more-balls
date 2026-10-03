@@ -4,7 +4,7 @@ extends Node2D
 @onready var angulation = 0
 @onready var stopped = 0
 @onready var main = get_node("..")
-var ball = preload("res://Ball/ball.tscn")
+@onready var ball = preload("res://Ball/ball.tscn")
 
 
 func _ready() -> void:
@@ -26,5 +26,9 @@ func _process(delta: float) -> void:
 		angulation-=0.8
 	
 	if Input.is_action_just_pressed("click") and $Timer.time_left==0 and stopped == 0:
-		$Sprite2D/Marker2D.add_child(ball.instantiate())
+		var instant = ball.instantiate()
+		instant.global_rotation_degrees = $Sprite2D/Marker2D.global_rotation_degrees
+		print_debug(instant.global_rotation_degrees)
+		self.add_child(instant)
+		instant.global_position = $Sprite2D/Marker2D.global_position
 		$Timer.start()

@@ -12,7 +12,11 @@ one_shot = true
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1254582596]
 rotation = -1.5707964
 texture = ExtResource("2_72ky0")
-offset = Vector2(-62.914627, -0.57177734)
+offset = Vector2(-63, 0)
 
 [node name="Marker2D" type="Marker2D" parent="Sprite2D" unique_id=1145960464]
 position = Vector2(-125, -5.4639236e-06)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/Marker2D" unique_id=1035697243]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_72ky0")

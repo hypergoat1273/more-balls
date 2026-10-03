@@ -1,4 +1,4 @@
 extends RigidBody2D
 
 func _ready():
-	apply_impulse(Vector2(0,-100))
+	apply_impulse(to_local(Vector2(500,0)))
