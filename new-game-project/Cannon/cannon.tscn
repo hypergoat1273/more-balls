@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://ock5l7ogrrup"]
+
+[ext_resource type="Script" uid="uid://bq6t1o8putnri" path="res://Cannon/cannon.gd" id="1_0kveh"]
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="2_2kyob"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0kveh"]
+radius = 72.11102
+
+[node name="Cannon" type="Node2D" unique_id=778624047]
+script = ExtResource("1_0kveh")
+
+[node name="Timer" type="Timer" parent="." unique_id=494771246]
+wait_time = 0.001
+one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1254582596]
+texture = ExtResource("2_2kyob")
+
+[node name="Marker2D" type="Marker2D" parent="Sprite2D" unique_id=1145960464]
+position = Vector2(-75, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/Marker2D" unique_id=1035697243]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_2kyob")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D" unique_id=1005669724]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D" unique_id=78878825]
+shape = SubResource("CircleShape2D_0kveh")
