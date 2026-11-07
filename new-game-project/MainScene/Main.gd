@@ -1,0 +1,68 @@
+extends Node2D
+
+@onready var label: Label = $Label
+var pluh = 0
+var ball = preload("res://Ball/ball.tscn")
+var cannonscene = preload("res://Cannon/cannon.tscn")
+@export var money = 1
+@onready var cannon = null
+@onready var pin = null
+signal pleh
+@onready var pinnumby = 0
+@onready var Marker: Marker2D = null
+@export var impulse_size = 1000
+@onready var la = str("Pin")
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	cannonspawn(1)
+	pinspawn(18)
+	
+
+func ballspawn(numbywumby):
+	while numbywumby > 0:
+		var instant = ball.instantiate()
+		instant.global_position = Marker.global_position
+		self.add_child(instant)
+		var impulse_angle = cannon.global_position.direction_to(Marker.global_position)
+		instant.apply_impulse(impulse_angle*impulse_size)
+		numbywumby -= 1
+	#the impulse that you are looking for is along the angle from the cannon origin
+	#to the marker2d with a given magnitude
+	#to find the angle use cannon position . angle to (marker2d position) normalized and 
+	#then apply magnitude. This is useful as its then easier to change the impulse with level ups
+
+func cannonspawn(numby):
+	while numby > 0:
+		add_child(cannonscene.instantiate())
+		Marker = $Cannon/Sprite2D/Marker2D
+		cannon = $Cannon
+		cannon.makeball.connect(ballspawn)
+		cannon.global_position = $CannonPos.global_position
+		numby -= 1
+		
+
+func pinspawn(amount):
+	while amount > 0:
+		var pinscene = load("res://Pin/pin.tscn")
+		$InstancePins.add_child(pinscene.instantiate())
+		pin = $InstancePins.get_child(pinnumby)
+		pin.global_position = ($Pins.get_child(pinnumby)).global_position
+		pinnumby+= 1
+		amount-=1
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	$Label.text=str("%.2f" % $Timer.time_left)
+	if Input.is_action_just_pressed("click") and $Timer.time_left==0 and pluh == 0:
+		$Timer.start()
+	else:
+		return
+
+func _on_area_2d_mouse_entered() -> void:
+	var variable = 1
+	pleh.emit(variable)
+
+func _on_area_2d_mouse_exited() -> void:
+	var variable = 0
+	pleh.emit(variable)
